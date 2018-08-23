@@ -18,6 +18,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   gem "letter_opener" 
+  gem 'rspec-rails', '~> 3.7'
+
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
