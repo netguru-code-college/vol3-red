@@ -7,6 +7,9 @@ require 'faker'
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Faker::Config.locale = 'pl'
+
 50.times do
   street = Faker::Address.street_name
   building_number = Faker::Address.building_number
