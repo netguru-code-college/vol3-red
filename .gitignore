@@ -73,3 +73,5 @@ flycheck_*.el
 .dir-locals.el
 
 /config/database.yml
+
+db/schema.rb
