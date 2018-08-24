@@ -15,7 +15,7 @@ Faker::Config.locale = 'pl'
   building_number = Faker::Address.building_number
   city = Faker::Address.city
   zip_code = Faker::Address.zip_code
-Builiding.create!(street:  street,
+Building.create!(street:  street,
                   building_number: building_number,
                   city: city,
                   zip_code: zip_code)

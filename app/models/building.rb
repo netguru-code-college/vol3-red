@@ -1,4 +1,4 @@
-class Builiding < ApplicationRecord
+class Building < ApplicationRecord
   validates :street, presence: true, length: { maximum: 100 }
   validates :building_number, presence: true, length: { maximum: 4 }
   validates :city, presence: true, length: { maximum: 100 }
