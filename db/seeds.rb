@@ -8,6 +8,7 @@ require 'faker'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+estates = Estate.create([{ id: 0, name: "Miodowy zakątek"}, { id: 1, name: "Daremne żale"}])
 
 10.times do |apartment|
   Skill.create!(
