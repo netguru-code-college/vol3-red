@@ -3,4 +3,6 @@ class Apartment < ApplicationRecord
             format: { with: /\A\d+\z/,
                       message: "Integer only. No sign allowed." },
             length: { in: 1..4 }
+  belongs_to :building
+  belongs_to :estate
 end
