@@ -8,7 +8,7 @@ before_script:
 deploy:
   provider: heroku
   api_key:
-    secure: "eFB4FgBUn+1EOQC7Iuk5dKt0UbShSF2D8PNQkgc63mPLyw1fS/5Jt6pdmcRkq3f/C54ONQOa4Pu4IEUh8jjWoVaKIRhwc01w4H0rZrboqSAC/JNlgbq+MAkrKw46gKiBbNQB0Z3zz8cC6Xc1ZSHSps+rlJE4X/Lww4Gjjd958Nm+4cJMmFRxopfax2vnlJuyhXCI1MvQIZxvSyVmlgMvdDmJwO8TzpIKJP8W6aSTtb3PL93r8gGdYHkG/oxM7PdvwLLXB/fBg7UNJIJnaxLWOVnPijzi9LRZoEfaSmxgd8jlTNl5BF7RSI1CNLEePzwxSfO0OoAUGkos4QchWc6icxI1CENv1khGtX71a+eFnifY8JseGmdty+xzZfcn4Pyq1AvhxHzAEDn4dncvHboQRHHlB0KkxwnepaMT917zLPH46X52Caa6bvEXGVH5pmOiYxDTOxfMzTAGT2UnEPnO54JhCky1frX02XHmzhSaSXasqdG0DS2tpxTet8g/7ayUawjLY2uzo3OnVTIFiFiwquf574iqQ2/x5NeXn1EL7k8r+T1JfF+PTWZvZZiefhlpjTpJDHA0XKvht3M6jpvEA2yUgNj/z4WUASWVAsYqRq2TFq/o4BIfepWGrSwjSw2lSmG6lHMpkVHJ5vTSNJnPJuv2XG0YPB7D8SK2AUGAmZg="
+    secure: env[herokukey]
   app: vol3-red
   on:
     repo: netguru-code-college/vol3-red
