@@ -7,29 +7,42 @@ require 'faker'
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
 Faker::Config.locale = 'pl'
 
-50.times do
+5.times do
+  estate_name = Faker::Address.country
+  Estate.create!(name: estate_name)
+end
+
+puts "Estates seeds created"
+
+20.times do
   street = Faker::Address.street_name
   building_number = Faker::Address.building_number
   city = Faker::Address.city
   zip_code = Faker::Address.zip_code
-Building.create!(street:  street,
-                  building_number: building_number,
-                  city: city,
-                  zip_code: zip_code)
+  Building.create!(street:  street,
+                   building_number: building_number,
+                   city: city,
+                   zip_code: zip_code,
+                   estate_id: rand(1..5)
+                  )
 end
-puts "buildings seeds created"
 
+puts "Buildings seeds created"
 
-estates = Estate.create([{ id: 0, name: "Miodowy zakątek"}, { id: 1, name: "Daremne żale"}])
-
-10.times do |apartment|
-  Skill.create!(
-    apartment_number: apartment
+150.times do |apartment|
+  Apartment.create!(
+    apartment_number: apartment,
+    building_id: rand(1..20)
   )
 end
-puts "Apartment seeds created"
 
+puts "Apartments seeds created"
 
+50.times do
+  User.create(email: 'test@example.com',
+              encrypted_password: '#$taawktljasktlw4aaglj')
+end
+
+puts "Users seeds created"
