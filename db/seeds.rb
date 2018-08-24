@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+50.times do
+  street = Faker::Address.street_name
+  building_number = Faker::Address.building_number
+  city = Faker::Address.city
+  zip_code = Faker::Address.zip_code
+Builiding.create!(street:  street,
+                  building_number: building_number,
+                  city: city,
+                  zip_code: zip_code)
+end
