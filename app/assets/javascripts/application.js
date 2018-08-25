@@ -16,5 +16,5 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-//= require_tree .
 //= require cookies_eu
+//= require_tree .
