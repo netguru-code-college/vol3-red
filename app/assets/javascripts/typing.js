@@ -10,10 +10,11 @@ $(document).ready(function(){
     if (i < txt.length) {
       $demo.innerHTML += txt.charAt(i);
       i++;
-    } else {
-         $demo.innerHTML = '';
-      i=0;
     }
+    // else {
+    //      $demo.innerHTML = '';
+    //   i=0;
+    // }
     setTimeout(typeWriter, speed);
   }
 });
