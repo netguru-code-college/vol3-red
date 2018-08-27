@@ -16,37 +16,25 @@
     </tr>
   </thead>
   <tbody>
-    <% @estates.each do |estate| %>
     <tr>
-      <th scope="row">1</th>
+      <% @estates.each do |estate| %>
+      <th scope="row">
+        <%= estate.id %>
+      </th>
       <td><%= estate.name %></td>
-      <td><%= estate.name %></td>
-      <td><%= estate.name %></td>
-      <td><%= estate.name %></td>
-      <td><%= estate.name %></td>
-
+      <% estate.buildings.each do |building| %>
+        <td><%= building.building_number %></td>
+        <% building.apartments.each do |apartment| %>
+          <td><%= apartment.apartment_number %></td>
+          <% apartment.users.each do |user| %>
+            <td><%= user.email %></td>
+          <% end %>
+        <% end %>
+      <% end %>
 
       <td><%= link_to 'Show', root_path, class: "btn btn-sm btn-succes" %></td>
     </tr>
 
-    <ul>
-      <li><%= estate.name %></li>
-      <% estate.buildings.each do |building| %>
-      <ul>
-        <li><%= building.building_number %></li>
-        <% building.apartments.each do |apartment| %>
-        <ul>
-          <li><%= apartment.apartment_number %></li>
-          <% apartment.users.each do |user| %>
-          <ul>
-            <li><%= user.email %></li>
-          </ul>
-          <% end %>
-        </ul>
-        <% end %>
-      </ul>
-      <% end %>
-    </ul>
 
 
     <% end %>
