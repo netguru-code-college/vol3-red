@@ -6,8 +6,15 @@
        <a class="nav-link active" href="#">Home</a>
        <a class="nav-link" href="#">Policy</a>
        <a class="nav-link" href="#">Contact</a>
-       <a class="nav-link" href="#"><button href="#" class="btn btn-sm btn-outline-secondary">Sign In</button></a>
-
+       <% if user_signed_in? %>
+         <li class="nav-link">
+         <%= link_to('Logout', destroy_user_session_path, class: "btn btn-sm btn-outline-secondary", method: :delete) %>
+         </li>
+       <% else %>
+         <li class="nav-link">
+         <%= link_to('Login', new_user_session_path, class: "btn btn-sm btn-outline-secondary")  %>
+         </li>
+       <% end %>
      </nav>
    </div>
  </header>
