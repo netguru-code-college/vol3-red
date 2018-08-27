@@ -7,4 +7,7 @@ class DashboardController < ApplicationController
     @user = current_user
     @estates = Estate.all
   end
+
+
+
 end
