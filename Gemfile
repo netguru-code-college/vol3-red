@@ -10,6 +10,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'cookies_eu'
 gem 'devise'
 gem 'faker', '~> 1.6', '>= 1.6.6'
+gem "font-awesome-rails"
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'pg', '>= 0.18', '< 2.0'
