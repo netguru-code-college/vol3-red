@@ -9,40 +9,60 @@ require 'faker'
 #   Character.create(name: 'Luke', movie: movies.first)
 Faker::Config.locale = 'pl'
 
-5.times do
-  estate_name = Faker::Address.country
-  Estate.create!(name: estate_name)
+estates = [
+  {
+    name: 'Osiedle Lecha',
+    street: 'osiedle Lecha',
+    city: 'Poznań',
+    zip_code: '60-101'
+  },
+  {
+    name: 'Osiedle Rusa',
+    street: 'osiedle Rusa',
+    city: 'Poznań',
+    zip_code: '60-101'
+  },
+  {
+    name: 'Helenki Wysokie',
+    street: 'Ignacego Paderewskiego',
+    city: 'Śrem',
+    zip_code: '63-100'
+  }
+]
+
+user_number = 1
+for i in 0...3
+  puts "Creating '#{estates[i][:name]}' estate"
+  estate = Estate.create!(name: estates[i][:name])
+  for building_id in 1..5
+    street = estates[i][:street]
+    city = estates[i][:city]
+    zip_code = estates[i][:zip_code]
+    building = Building.create!(street:  street,
+                               building_number: building_id,
+                               city: city,
+                               zip_code: zip_code,
+                               estate: estate
+                              )
+    for apartment_number in 1..5
+      apartment = Apartment.create!(
+        apartment_number: apartment_number,
+        building: building
+      )
+      user = User.new(email: "test#{user_number}@example.com")
+      user.skip_confirmation!
+      user.password = 'qwerty'
+      user.save
+      user_number += 1
+      ApartmentUser.create(
+        apartment: apartment,
+        user: user,
+        status: 0
+      )
+      user = nil
+    end
+  end
 end
 
-puts "Estates seeds created"
+puts "Estates, buildings and apartments seeds created"
 
-20.times do
-  street = Faker::Address.street_name
-  building_number = Faker::Address.building_number
-  city = Faker::Address.city
-  zip_code = Faker::Address.zip_code
-  Building.create!(street:  street,
-                   building_number: building_number,
-                   city: city,
-                   zip_code: zip_code,
-                   estate_id: rand(1..5)
-                  )
-end
-
-puts "Buildings seeds created"
-
-150.times do |apartment|
-  Apartment.create!(
-    apartment_number: apartment,
-    building_id: rand(1..20)
-  )
-end
-
-puts "Apartments seeds created"
-
-50.times do
-  User.create(email: 'test@example.com',
-              encrypted_password: '#$taawktljasktlw4aaglj')
-end
-
-puts "Users seeds created"
