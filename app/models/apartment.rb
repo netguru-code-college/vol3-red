@@ -4,4 +4,6 @@ class Apartment < ApplicationRecord
                       message: "Integer only. No sign allowed." },
             length: { in: 1..4 }
   belongs_to :building
+  has_many :apartment_users
+  has_many :users, through: :apartment_users
 end
