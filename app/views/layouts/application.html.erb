@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Vol3Red</title>
+    <title>Application for managing estate's community</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
 
-  <body>
+  <body class="text-center" data-gr-c-s-loaded="true">
     <%= yield %>
-    
     <%= render 'cookies_eu/consent_banner' %>
   </body>
 </html>
