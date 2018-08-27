@@ -1,4 +1,42 @@
 <div class="container mt-3 dashboard-panel border ">
-  <h1 class="text-dark">Hello dear <%= @user.email %></h1>
+  <h1 class="text-dark">Hello dear <%= current_user.email %></h1>
 
 </div>
+
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Estate</th>
+      <th scope="col">Building</th>
+      <th scope="col">Apartment</th>
+      <th scope="col">Owner</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @estates.each do |estate| %>
+      <th scope="row">
+        <%= estate.id %>
+      </th>
+      <td><%= estate.name %></td>
+      <% estate.buildings.each do |building| %>
+        <td><%= building.building_number %></td>
+        <% building.apartments.each do |apartment| %>
+          <td><%= apartment.apartment_number %></td>
+          <% apartment.users.each do |user| %>
+            <td><%= user.email %></td>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <td><%= link_to 'Show', root_path, class: "btn btn-sm btn-succes" %></td>
+    </tr>
+
+
+
+    <% end %>
+  </tbody>
+</table>
