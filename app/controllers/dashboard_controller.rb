@@ -5,6 +5,6 @@ class DashboardController < ApplicationController
 
   def index
     @user = current_user
-    @estates = Estates.all
+    @estates = Estate.all
   end
 end
