@@ -2,6 +2,10 @@
   <div class="card-body ">
     <h5 class="card-title ">Create New Notifiaction </h5>
 
+    <% if notice.present? %>
+      <div class='alert alert-success' role="alert"><%= notice %></div>
+    <% end %>
+
       <%= simple_form_for (Anotification.new), url: anotifications_path do  |f| %>
        <%= f.error_notification %>
        <%= f.input :apartment_id, as: :integer %>

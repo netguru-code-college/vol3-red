@@ -7,10 +7,11 @@ class AnotificationsController < ApplicationController
   def create
     @anotification = Anotification.new(anotification_params)
     if @anotification.save
-      redirect_to anotification_path(@anotification),
+      redirect_to anotifications_path,
                   notice: 'Notice was successfully created.'
     else
-      render :new, notice: 'You got the some problem'
+      redirect_to anotifications_path,
+                  notice: 'Hello! it is meeeee! Your error!'
     end
   end
 
