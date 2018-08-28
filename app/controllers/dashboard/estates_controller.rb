@@ -39,7 +39,7 @@ class Dashboard::EstatesController < ApplicationController
   end
 
   def estate_params
-    params.require(:estate).permit(:name)
+    params.require(:estate).permit(:name, :estate_image)
 
   end
 
