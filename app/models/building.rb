@@ -10,5 +10,5 @@ class Building < ApplicationRecord
 
   has_many :apartments
   belongs_to :estate
-  has_many :bnotification
+  has_many :bnotifications
 end

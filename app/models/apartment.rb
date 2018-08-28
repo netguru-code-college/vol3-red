@@ -6,4 +6,5 @@ class Apartment < ApplicationRecord
   belongs_to :building
   has_many :apartment_users
   has_many :users, through: :apartment_users
+  has_many :anotifications
 end
