@@ -1,3 +1,22 @@
+<div class="card text-center mt-5 mb-5">
+  <div class="card-body ">
+    <h5 class="card-title ">Create New Notifiaction </h5>
+
+      <%= simple_form_for (Anotification.new), url: anotifications_path do  |f| %>
+       <%= f.error_notification %>
+       <%= f.input :apartment_id, as: :integer %>
+       <%= f.input :title %>
+       <%= f.input :body %>
+       <%= f.input :valid_up_to_date, as: :string, input_html: {type: :date} %>
+       <%= f.button :submit, class: "btn-primary" %>
+       <%= f.button :button, "Cancel", type: "reset", class: "btn-secondary" %>
+      <% end %>
+
+
+    <a href="#" class="btn btn-sm btn-outline-dark">Back to dashboard</a>
+  </div>
+
+</div>
 <% @anotifications.each do |anotification|  %>
   <% if anotification.valid_up_to_date >= Date.today %>
     <div class="card text-center">
