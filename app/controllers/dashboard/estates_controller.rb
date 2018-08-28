@@ -4,12 +4,11 @@ class Dashboard::EstatesController < ApplicationController
   before_action :find_estate, only: [:show, :edit, :update, :destroy]
 
   def index
-    @user = current_user
     @estates = Estate.all
+    @user = current_user
   end
 
   def show
-    @estates = Estate.all
   end
 
   def new
