@@ -8,5 +8,7 @@ class DashboardController < ApplicationController
     @user = current_user
     @estates = Estate.all
     @enotifications = Enotification.all
+    @bnotifications = Bnotification.all
+    @anotifications = Anotification.all
   end
 end
