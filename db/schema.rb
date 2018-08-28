@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_28_093558) do
+ActiveRecord::Schema.define(version: 2018_08_28_124618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "anotifications", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.date "valid_up_to_date"
+    t.bigint "apartment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["apartment_id"], name: "index_anotifications_on_apartment_id"
+  end
 
   create_table "apartment_users", force: :cascade do |t|
     t.integer "status"
@@ -33,6 +43,16 @@ ActiveRecord::Schema.define(version: 2018_08_28_093558) do
     t.index ["building_id"], name: "index_apartments_on_building_id"
   end
 
+  create_table "bnotifications", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.date "valid_up_to_date"
+    t.bigint "building_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_bnotifications_on_building_id"
+  end
+
   create_table "buildings", force: :cascade do |t|
     t.string "street"
     t.integer "building_number"
@@ -42,6 +62,16 @@ ActiveRecord::Schema.define(version: 2018_08_28_093558) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["estate_id"], name: "index_buildings_on_estate_id"
+  end
+
+  create_table "enotifications", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.date "valid_up_to_date"
+    t.bigint "estate_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["estate_id"], name: "index_enotifications_on_estate_id"
   end
 
   create_table "estates", force: :cascade do |t|

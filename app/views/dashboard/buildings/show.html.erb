@@ -1,4 +1,4 @@
-
+<div class="wrapper">
   <div class="jumbotron mt-4">
     <h1 class="display-5 mb-5">Building of number <%= @building.building_number %></h1>
     <div class="container">
@@ -34,9 +34,55 @@
           </table>
         </div>
         <div class="col">
-          <div style="width: 100%"><iframe width="100%" height="400" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street%2C%20Dublin%2C%20Ireland+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a href="https://www.maps.ie/create-google-map/">Embed Google Map</a></iframe>
+          <div style="width: 100%">
+	    <iframe width="300" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=ytw5ig0mGYaEn9rf3H8ylpEOYNY=&q=ADDRESS_OR_COORDINATES"
+		    allowfullscreen>
+	    </iframe>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+<div class="wrapper">
+  <h3 class="mb-3">List of apartments</h3>
+
+  <% @building.apartments.each do |a| %>
+  <%= a.apartment_number %>
+    <% @user.each do |u| %>
+      <%= u.surname %>
+    <% end %>
+  <% end %>
+
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
