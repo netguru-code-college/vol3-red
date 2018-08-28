@@ -8,7 +8,12 @@ RSpec.describe "Sessions", type: :request do
       user.destroy
     end
 
-    user = User.create!(email: "user@example.org", password: "very-secret")
+    user = User.create!(
+      email: "user@example.org", 
+      password: "very-secret",
+      name: Faker::Name.first_name,
+      surname: Faker::Name.last_name
+    )
     user.confirm
     
     sign_in user

@@ -53,7 +53,11 @@ for i in 0...3
         apartment_number: apartment_number,
         building: building
       )
-      user = User.new(email: "test#{user_number}@example.com")
+      user = User.new(
+        email: "test#{user_number}@example.com",
+        name: Faker::Name.first_name,
+        surname: Faker::Name.last_name
+      )
       user.skip_confirmation!
       user.password = 'qwerty'
       user.save
