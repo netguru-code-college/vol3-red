@@ -3,9 +3,9 @@
   <div class="card text-center mt-5 mb-5">
     <div class="card-body ">
       <h5 class="card-title "><%= @estate.name %> </h5>
-      <p class="card-text">uis aute irure dolor in reprehenderit in voluptate velit esse
+      <p class="card-text">Luis aute irure dolor in reprehenderit in voluptate velit esse
         cillum dolore eu fugiat nulla pariatur.</p>
-      <a href="#" class="btn btn-sm btn-outline-dark">Back to dashboard</a>
+        <%= link_to 'Back to dashboard', dashboard_path, class: "btn btn-sm btn-outline-dark" %>
     </div>
 
   </div>
@@ -19,15 +19,17 @@
               <span class="badge badge-info mb-3"><%= @estate.name %></span>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item text-center">
-                  <%= link_to 'Details', dashboard_estate_building_path(@estate), class: "btn btn-outline-info mt-2" %>
+                  <%= link_to 'Details', dashboard_estate_building_apartments_path(@estate, building.id), class: "btn btn-outline-info mt-2" %>
                   <%= link_to 'Archive', root_path, class: "btn btn-xs btn-outline-danger  mt-2 " %>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-
         <% end %>
+
+
+
 
 
   </div>

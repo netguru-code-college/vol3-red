@@ -6,6 +6,10 @@ class Dashboard::ApartmentsController < ApplicationController
   def index
     @user = current_user
     @estates = Estate.all
+    @buildings = Building.all
+    @building = @estates.buildings.find(params[:id])
+    @apartments = Apartment.all
+
   end
 
   def show

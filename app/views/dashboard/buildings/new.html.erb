@@ -1,0 +1,29 @@
+
+  <div class="card text-center mt-5 mb-5 pb-5">
+    <div class="card-body ">
+      <h5 class="card-title ">Add a new estate</h5>
+      <p class="card-text">Luis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur.</p>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm">
+      </div>
+      <div class="col-sm">
+            <%= simple_form_for @building, url: dashboard_estate_building_path do |f| %>
+            <%= f.input :building_number,  label: 'Number of building' %>
+            <%= f.input :street,  label: 'Name of street' %>
+            <%= f.input :city,  label: 'City' %>
+            <%= f.input :zip_code,  label: 'Zip-code' %>
+          <%= f.button :submit, class: "btn btn-lg btn-success" %>
+          <% end %>
+      </div>
+
+      <div class="col-sm">
+      </div>
+    </div>
+  </div>
+    <div class="wrapper m-5 text-center">
+      <a href="#" class="btn btn-sm btn-outline-dark">Back to dashboard</a>
+    </div>
