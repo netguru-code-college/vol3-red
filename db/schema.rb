@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_28_080401) do
+ActiveRecord::Schema.define(version: 2018_08_28_123409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 2018_08_28_080401) do
     t.datetime "updated_at", null: false
     t.bigint "building_id"
     t.index ["building_id"], name: "index_apartments_on_building_id"
+  end
+
+  create_table "bnotifications", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.date "valid_up_to_date"
+    t.bigint "building_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_bnotifications_on_building_id"
   end
 
   create_table "buildings", force: :cascade do |t|

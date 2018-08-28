@@ -48,6 +48,10 @@ for i in 0...3
                                zip_code: zip_code,
                                estate: estate
                               )
+    bnotification = Bnotification.create!(building: building,
+                                  title: Faker::Pokemon.name,
+                                  body: Faker::Lorem.sentence,
+                                  valid_up_to_date: 10.days.from_now)
     for apartment_number in 1..5
       apartment = Apartment.create!(
         apartment_number: apartment_number,
