@@ -1,5 +1,5 @@
 class EnotificationController < ApplicationController
-  before_action :authenticate_user!, scope: :admin
+  #before_action :authenticate_user!, scope: :admin
 
   def create
     @enotification = current_estate.enotifications.build
