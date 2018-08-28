@@ -1,0 +1,18 @@
+<% @bnotifications.each do |bnotification|  %>
+  <% if bnotification.valid_up_to_date >= Date.today %>
+    <div class="card text-center">
+      <div class="card card-header text-white bg-info mb-3">
+         Building Notification
+      </div>
+      <div class="card-body ">
+        <h5 class="card-title "> <%= bnotification.title %> </h5>
+        <p class="card-text"> <%= bnotification.body %> </p>
+        <!-- button for admin user -->
+        <a href="#" class="btn btn-outline-dark">Moved to archive</a>
+      </div>
+      <div class="card-footer text-muted">
+        Created at: <%= bnotification.created_at.time.to_date %> Valid to: <%= bnotification.valid_up_to_date %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

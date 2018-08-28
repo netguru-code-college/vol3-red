@@ -1,0 +1,18 @@
+<% @anotifications.each do |anotification|  %>
+  <% if anotification.valid_up_to_date >= Date.today %>
+    <div class="card text-center">
+      <div class="card card-header text-white bg-info mb-3">
+         Apartment Notification
+      </div>
+      <div class="card-body ">
+        <h5 class="card-title "> <%= anotification.title %> </h5>
+        <p class="card-text"> <%= anotification.body %> </p>
+        <!-- button for admin user -->
+        <a href="#" class="btn btn-outline-dark">Moved to archive</a>
+      </div>
+      <div class="card-footer text-muted">
+        Created at: <%= anotification.created_at.time.to_date %> Valid to: <%= anotification.valid_up_to_date %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
