@@ -34,6 +34,10 @@ user_number = 1
 for i in 0...3
   puts "Creating '#{estates[i][:name]}' estate"
   estate = Estate.create!(name: estates[i][:name])
+  enotification = Enotification.create!(estate: estate,
+                                        title: Faker::Pokemon.name,
+                                        body: Faker::Lorem.sentence,
+                                        valid_up_to_date: 10.days.from_now)
   for building_id in 1..5
     street = estates[i][:street]
     city = estates[i][:city]
@@ -68,5 +72,7 @@ for i in 0...3
   end
 end
 
-puts "Estates, buildings and apartments seeds created"
 
+
+
+puts "Estates, buildings and apartments seeds created"
