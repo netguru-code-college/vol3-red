@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboard#index'
 
   namespace :dashboard do
-    resources :estates
+    resources :estates do
+      resources :buildings do
+        resources :apartments do
+        end
+      end
+    end
   end
 
   get 'static_pages/contact'

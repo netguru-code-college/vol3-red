@@ -1,4 +1,4 @@
-class Dashboard::EstatesController < ApplicationController
+class Dashboard::ApartmentsController < ApplicationController
   layout 'dashboard'
   before_action :authenticate_user!
   before_action :find_estate, only: [:show, :edit, :update, :destroy]
