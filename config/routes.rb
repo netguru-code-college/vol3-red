@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :enotifications
+  resources :bnotifications
+  resources :anotifications
+
   get 'static_pages/contact'
   get 'static_pages/cookiepolicy'
 end

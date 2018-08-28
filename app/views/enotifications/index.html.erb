@@ -1,0 +1,18 @@
+<% @enotifications.each do |enotification|  %>
+  <% if enotification.valid_up_to_date >= Date.today %>
+    <div class="card text-center">
+      <div class="card card-header text-white bg-info mb-3">
+         Estate Notification
+      </div>
+      <div class="card-body ">
+        <h5 class="card-title "> <%= enotification.title %> </h5>
+        <p class="card-text"> <%= enotification.body %> </p>
+        <!-- button for admin user -->
+        <a href="#" class="btn btn-outline-dark">Moved to archive</a>
+      </div>
+      <div class="card-footer text-muted">
+        Created at: <%= enotification.created_at.time.to_date %> Valid to: <%= enotification.valid_up_to_date %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
