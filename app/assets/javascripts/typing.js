@@ -11,10 +11,6 @@ $(document).ready(function(){
       $demo.innerHTML += txt.charAt(i);
       i++;
     }
-    // else {
-    //      $demo.innerHTML = '';
-    //   i=0;
-    // }
     setTimeout(typeWriter, speed);
   }
 });
