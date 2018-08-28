@@ -7,6 +7,15 @@ class Estate < ApplicationRecord
   mount_uploader :estate_image, EstateImageUploader
   validates_integrity_of  :estate_image
   validates_processing_of :estate_image
+
+  def get_estate_image
+    id = self.estate_image_identifier
+    if id.present? and id[0,3] == 'id:'
+      self.estate_image.url
+    else
+      'estate.jpg'
+    end
+  end
  
   private
     def avatar_size_validation
