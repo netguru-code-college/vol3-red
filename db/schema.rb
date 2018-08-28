@@ -15,14 +15,6 @@ ActiveRecord::Schema.define(version: 2018_08_28_080401) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "apartment_notifications", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.date "valid_up_to_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "apartment_users", force: :cascade do |t|
     t.integer "status"
     t.bigint "apartment_id"
@@ -39,14 +31,6 @@ ActiveRecord::Schema.define(version: 2018_08_28_080401) do
     t.datetime "updated_at", null: false
     t.bigint "building_id"
     t.index ["building_id"], name: "index_apartments_on_building_id"
-  end
-
-  create_table "building_notifications", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.date "valid_up_to_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "buildings", force: :cascade do |t|
@@ -70,32 +54,10 @@ ActiveRecord::Schema.define(version: 2018_08_28_080401) do
     t.index ["estate_id"], name: "index_enotifications_on_estate_id"
   end
 
-  create_table "estate_notifications", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.date "valid_up_to_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "estates", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "notifications", force: :cascade do |t|
-    t.bigint "estate_id"
-    t.bigint "building_id"
-    t.bigint "apartment_id"
-    t.string "title"
-    t.text "body"
-    t.date "valid_up_to_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["apartment_id"], name: "index_notifications_on_apartment_id"
-    t.index ["building_id"], name: "index_notifications_on_building_id"
-    t.index ["estate_id"], name: "index_notifications_on_estate_id"
   end
 
   create_table "users", force: :cascade do |t|
