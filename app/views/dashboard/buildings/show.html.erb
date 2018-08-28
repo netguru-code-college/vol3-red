@@ -1,4 +1,4 @@
-
+<div class="wrapper">
   <div class="jumbotron mt-4">
     <h1 class="display-5 mb-5">Building of number <%= @building.building_number %></h1>
     <div class="container">
@@ -40,3 +40,46 @@
       </div>
     </div>
   </div>
+</div>
+<div class="wrapper">
+  <h3 class="mb-3">List of apartments</h3>
+
+  <% @building.apartments.each do |a| %>
+  <%= a.apartment_number %>
+    <% @user.each do |u| %>
+      <%= u.surname %>
+    <% end %>
+  <% end %>
+
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
