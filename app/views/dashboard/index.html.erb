@@ -10,22 +10,28 @@
           <%= button_to 'Add a new estate', root_path, class: "btn-lg btn-outline-info mt-3" %>
       </div>
 
-      <div class="card text-center">
-        <div class="card card-header text-white bg-info mb-3">
-          Notification
-        </div>
-        <div class="card-body ">
-          <h5 class="card-title ">Title of notification</h5>
-          <p class="card-text">uis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur.</p>
-          <a href="#" class="btn btn-outline-dark">Moved to archive</a>
-        </div>
-        <div class="card-footer text-muted">
-          2 days ago
-        </div>
+      <div class="row">
+
+        <% @enotifications.each do |enotification|  %>
+          <% if enotification.valid_up_to_date >= Date.today %>
+            <div class="card text-center">
+              <div class="card card-header text-white bg-info mb-3">
+                 Estate Notification
+              </div>
+              <div class="card-body ">
+                <h5 class="card-title "> <%= enotification.title %> </h5>
+                <p class="card-text"> <%= enotification.body %> </p>
+                <!-- button for admin user -->
+                <a href="#" class="btn btn-outline-dark">Moved to archive</a>
+              </div>
+              <div class="card-footer text-muted">
+                Created at: <%= enotification.created_at.time.to_date %> Valid to: <%= enotification.valid_up_to_date %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
-
 
     <div class="col">
       <div class="wrapper mt-4">
