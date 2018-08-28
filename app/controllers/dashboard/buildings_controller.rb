@@ -9,8 +9,11 @@ class Dashboard::BuildingsController < ApplicationController
   end
 
   def show
-    @estate = Estate.find(params[:id])    
+    @estate = Estate.find(params[:id])
     @building = Building.find(params[:id])
+    @user = User.find(params[:id])
+    @users = User.all
+
   end
 
   def new

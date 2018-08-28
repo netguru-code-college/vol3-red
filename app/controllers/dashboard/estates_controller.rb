@@ -12,24 +12,23 @@ class Dashboard::EstatesController < ApplicationController
   end
 
   def new
-    @estate = Estate.new(estate_params)
+    @estate = Estate.new
   end
 
   def edit
   end
 
   def create
-    @estate = Estate.find(params[:id])
-    if @estate.safe
-      redirect_to @estate, notice: 'Estate was successfully created.'
+    @estate = Estate.new(estate_params)
+    if @estate.save
+      redirect_to dashboard_estate_path(@estate), notice: 'Estate was successfully created.'
     else
-      render :new
+      render :new, notice: 'You got the some problem'
     end
   end
 
   def update
   end
-
 
   def destroy
   end
@@ -41,6 +40,7 @@ class Dashboard::EstatesController < ApplicationController
 
   def estate_params
     params.require(:estate).permit(:name)
+
   end
 
 
