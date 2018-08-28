@@ -10,10 +10,23 @@ class Estate < ApplicationRecord
 
   def get_estate_image
     id = self.estate_image_identifier
-    if id.present? and id[0,3] == 'id:'
-      self.estate_image.url
+    default_image = 'estate.jpg'
+    if id.present?
+      if id[0,3] == 'id:'
+        if Rails.configuration.carrierwave_storage == :dropbox
+          self.estate_image.url
+        else
+          default_image
+        end
+      else
+        if Rails.configuration.carrierwave_storage == :file
+          self.estate_image.url 
+        else
+          default_image
+        end
+      end
     else
-      'estate.jpg'
+      default_image
     end
   end
  
