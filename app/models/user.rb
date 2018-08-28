@@ -10,7 +10,6 @@ class User < ApplicationRecord
   def admin?
     is_admin = false
     self.apartment_users.map do |apartment_user|
-      pp apartment_user
       if apartment_user.status == 'admin' 
         is_admin = true
       end
@@ -20,7 +19,6 @@ class User < ApplicationRecord
 
   def admin=(admin)
     is_admin = admin ? true : false
-    puts 'set admin'
     self.apartment_users.map do |apartment_user|
       if is_admin
         apartment_user.status = 'admin'
