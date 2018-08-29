@@ -15,11 +15,9 @@
         input_html: { autocomplete: "email" }%>
         <%= f.input :name,
         required: true,
-        autofocus: true ,
         input_html: { autocomplete: "name" }%>
         <%= f.input :surname,
         required: true,
-        autofocus: true ,
         input_html: { autocomplete: "surname" }%>
         <%= f.input :password,
         required: true,
@@ -28,6 +26,7 @@
         <%= f.input :password_confirmation,
         required: true,
         input_html: { autocomplete: "new-password" } %>
+      <%= f.input :thumbnail, as: :file, label: false, required: true %>
       </div>
 
       <div class="form-actions">

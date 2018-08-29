@@ -11,10 +11,11 @@
       <div class="col-sm">
       </div>
       <div class="col-sm">
-            <%= simple_form_for @estate, url: dashboard_estates_path do |f| %>
-            <%= f.input :name,  label: 'Name of an estate' %>
+        <%= simple_form_for @estate, url: dashboard_estates_path do |f| %>
+          <%= f.input :name,  label: 'Name of an estate' %>
+          <%= f.input :estate_image, as: :file, label: false, required: true %>
           <%= f.button :submit, class: "btn btn-lg btn-success" %>
-          <% end %>
+        <% end %>
       </div>
 
       <div class="col-sm">
