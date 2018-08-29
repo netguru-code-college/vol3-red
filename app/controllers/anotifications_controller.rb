@@ -25,6 +25,6 @@ class AnotificationsController < ApplicationController
 
   private
   def anotification_params
-    params.require(:anotification).permit(:buildings, :apartment_id, :title, :body, :valid_up_to_date)
+    params.require(:anotification).permit(:apartment_id, :title, :body, :valid_up_to_date)
   end
 end
