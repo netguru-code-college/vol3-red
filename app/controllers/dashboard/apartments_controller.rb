@@ -10,10 +10,13 @@ class Dashboard::ApartmentsController < ApplicationController
     @building = Building.find(params[:building_id])
     @apartments = @building.apartments
 
+
   end
 
   def show
     @estates = Estate.all
+    @apartment = Apartment.find(params[:id])
+    @anotifications = @apartment.anotifications
   end
 
   def new

@@ -5,10 +5,10 @@ class Enotification < ApplicationRecord
   validate :valid_up_to_date_cannot_be_in_the_past
 
   def valid_up_to_date_cannot_be_in_the_past
-    if valid_up_to_date.present? && valid_up_to_date < Date.today
-      errors.add(:valid_up_to_date, "can't be in the past")
-    end
+    errors.add("can't be in the past") if valid_up_to_date.present? &&
+                                          valid_up_to_date < Date.today
   end
 
   belongs_to :estate
+  default_scope -> { order(:valid_up_to_date) }
 end
