@@ -9,6 +9,7 @@ class Dashboard::EstatesController < ApplicationController
   end
 
   def show
+    find_estate
   end
 
   def new
