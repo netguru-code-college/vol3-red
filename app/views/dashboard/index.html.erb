@@ -5,19 +5,45 @@
       <h2>Hello <b><%= current_user.name %> <%= current_user.surname %></b> </h2>
       <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
         cillum dolore eu fugiat nulla pariatur. </p>
+        <% if current_user.admin? %>
         <%= link_to 'Add a new estate', new_dashboard_estate_path, class: "btn btn-lg btn-outline-info mt-2" %>
+        <% end %>
       </div>
     <%= render "notification" %>
   </div>
 
-    <!-- if current_user = admin show Estate.all -->
-    <!-- in current_user != admin ahow current_user.apartment -->
-    <!-- if admin?(@user) -->
-    <% if true %>
-      <h3 id="list_estates"> List of estates </h3>
-      <%= render "estates_all" %>
-    <% else %>
-      <%= render "my_apartments" %>
-    <% end %>
-    <!-- end show this if current_user = admin -->
+  <% if current_user.admin? %>
+  <div class="row pt-3">
+    <h3 id="list_estates"> List of estates </h3>
+    <%= render "estates_all" %>
+  </div>
+  <% else %>
+  <div class="row pt-3">
+
+    <tbody>
+
+<%= current_user.name %>
+      <% @apartments.each_with_index do |a, index|%>
+      <tr>
+        <th scope="row"><%= index +1 %> </th>
+        <td> <%= a.apartment_number %></td>
+        <% a.apartment_users.each do |apartment_user| %>
+        <td> <%= apartment_user.user.name %> <%= apartment_user.user.surname %></td>
+        <% end %>
+
+        <% if current_user.admin? %>
+          <td>It's visible only for admin</td>
+        <% else %>
+          <td>
+            <%= link_to 'Go to notifications', dashboard_path, class: "btn btn-xs btn-outline-dark mb-5" %>
+          </td>
+          <% end %>
+
+      </tr>
+
+      <% end %>
+    </tbody>
+
+  </div>
+  <% end %>
 </div>
