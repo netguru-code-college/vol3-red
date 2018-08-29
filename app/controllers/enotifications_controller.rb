@@ -1,4 +1,5 @@
 class EnotificationsController < ApplicationController
+  layout 'dashboard'
   def index
     @enotifications = Enotification.all
   end
