@@ -11,7 +11,7 @@
   <body>
     <div class="container">
       <nav class="navbar navbar navbar-expand-lg navbar-light bg-light">
-        <%= link_to('Alternatives 4', dashboard_path, class: "navbar-brand", method: :delete) %>
+        <%= link_to('Alternatives 4', dashboard_path, class: "navbar-brand") %>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse nav-masthead justify-content-center" id="navbarNav">
           <ul class="navbar-nav">
 
-            <li class="<%= 'active' if current_page?(root_path) %>">
+            <li class="<%= 'active' if current_page?(dashboard_path) %>">
                <%= link_to dashboard_path, class: "nav-link" do %> Dashboard
                  <%= (content_tag :span, "(current)", :class => "sr-only") if current_page?(dashboard_path) %>
                <% end %>
