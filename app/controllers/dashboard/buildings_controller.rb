@@ -4,8 +4,9 @@ class Dashboard::BuildingsController < ApplicationController
 
   def index
     @user = current_user
-    @estate = Estate.find(params[:id])
+    @estate = Estate.find(params[:estate_id])
     @buildings = Building.all
+    
   end
 
   def show

@@ -20,7 +20,7 @@ class Estate < ApplicationRecord
         end
       else
         if Rails.configuration.carrierwave_storage == :file
-          self.estate_image.url 
+          self.estate_image.url
         else
           default_image
         end
@@ -29,7 +29,7 @@ class Estate < ApplicationRecord
       default_image
     end
   end
- 
+  
   private
     def avatar_size_validation
       errors[:estate_image] << "should be less than 500KB" if estate_image.size > 0.5.megabytes
