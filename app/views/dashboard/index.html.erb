@@ -5,19 +5,49 @@
       <h2>Hello <b><%= current_user.name %> <%= current_user.surname %></b> </h2>
       <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
         cillum dolore eu fugiat nulla pariatur. </p>
+        <% if current_user.admin? %>
         <%= link_to 'Add a new estate', new_dashboard_estate_path, class: "btn btn-lg btn-outline-info mt-2" %>
+        <% end %>
       </div>
+
+      <% if current_user.admin? %>
+      <div class="pt-3">
+        <h3 id="list_estates"> List of estates </h3>
+        <%= render "estates_all" %>
+      </div>
+
+      <% else %>
+        <div class="pt-3 jumbotron">
+
+        <h5 class="text-center"> Your apartments</h5>
+
+        <table class="table text-center">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Number of apartment</th>
+              <th scope="col">Building</th>
+              <th scope="col">Estate</th>
+            </tr>
+          </thead>
+          <tbody>
+
+
+            <% @user.apartment_users.each_with_index do |user_apartment, index| %>
+            <tr>
+              <th scope="row"><%= index +1 %> </th>
+              <td><%= user_apartment.apartment.apartment_number %></td>
+              <td> <%= user_apartment.apartment.building.building_number %></td>
+              <td><%= user_apartment.apartment.building.estate.name %></td>
+              <% end %>
+
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <hr>
     <%= render "notification" %>
   </div>
 
-    <!-- if current_user = admin show Estate.all -->
-    <!-- in current_user != admin ahow current_user.apartment -->
-    <!-- if admin?(@user) -->
-    <% if true %>
-      <h3 id="list_estates"> List of estates </h3>
-      <%= render "estates_all" %>
-    <% else %>
-      <%= render "my_apartments" %>
-    <% end %>
-    <!-- end show this if current_user = admin -->
-</div>
+  </div>
