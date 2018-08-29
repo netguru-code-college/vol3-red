@@ -76,7 +76,7 @@
         <td> <%= apartment_user.user.name %> <%= apartment_user.user.surname %></td>
         <% end %>
 
-          <td> <%= link_to 'Add a notification', dashboard_path, class: "btn btn-xs btn-outline-success mb-5" %>
+          <td> <%= link_to 'Add a notification',  new_anotification_path( :apartment_id => a), class: "btn btn-xs btn-outline-success mb-5" %>
 
             <%= link_to 'Go to notifications', dashboard_path, class: "btn btn-xs btn-outline-dark mb-5" %>
           </td>

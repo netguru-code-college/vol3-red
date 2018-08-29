@@ -1,0 +1,31 @@
+<div class="card text-center mt-5 mb-5">
+  <div class="card-body ">
+    <h5 class="card-title ">Create New Notifiaction </h5>
+
+    <% if notice.present? %>
+      <div class='alert alert-success' role="alert"><%= notice %></div>
+    <% end %>
+
+      <%= simple_form_for (Anotification.new), url: anotifications_path do  |f| %>
+       <%= f.error_notification %>
+       <!-- <%= f.input :apartment_id, as: :integer %> -->
+       <!-- <%= f.association :apartment %> -->
+
+        <!-- <%= f.simple_fields_for :buildings do |b| %>
+          <%= b.input :building_number %>
+          <%= b.simple_fields_for :apartments do |a| %>
+            <%= a.input :apartment_number %>
+          <% end %>
+        <% end %> -->
+
+       <%= f.input :apartment_id, as: :hidden, input_html: {value: params[:apartment_id]} %>
+       <%= f.input :title %>
+       <%= f.input :body %>
+       <%= f.input :valid_up_to_date, as: :string, input_html: {type: :date} %>
+       <%= f.button :submit, class: "btn-primary" %>
+       <%= f.button :button, "Cancel", type: "reset", class: "btn-secondary" %>
+      <% end %>
+
+
+    <%= link_to 'Back to dashboard', dashboard_path, class: "btn btn-sm btn-outline-dark" %>
+  </div>

@@ -1,6 +1,7 @@
 class Estate < ApplicationRecord
   validates :name, presence: true
-  has_many :buildings
+  has_many :buildings, inverse_of: :estate
+  accepts_nested_attributes_for :buildings
   has_many :apartments, through: :buildings
   has_many :enotifications
 

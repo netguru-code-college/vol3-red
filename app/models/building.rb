@@ -8,7 +8,8 @@ class Building < ApplicationRecord
             length: { maximum: 6 },
             format: { with: VALID_PL_ZIP_CODE_REGEX }
 
-  has_many :apartments
+  has_many :apartments, inverse_of: :building
+  accepts_nested_attributes_for :apartments
   belongs_to :estate
   has_many :bnotifications
 end

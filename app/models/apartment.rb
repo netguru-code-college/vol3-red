@@ -7,4 +7,5 @@ class Apartment < ApplicationRecord
   has_many :apartment_users
   has_many :users, through: :apartment_users
   has_many :anotifications
+  accepts_nested_attributes_for :anotifications
 end
