@@ -11,11 +11,13 @@
       <div class="col-sm">
       </div>
       <div class="col-sm">
-        <%= simple_form_for @estate, url: dashboard_estates_path do |f| %>
-          <%= f.input :name,  label: 'Name of an estate' %>
-          <%= f.input :estate_image, as: :file, label: false, required: true %>
+            <%= simple_form_for @building, url: dashboard_estate_building_path do |f| %>
+            <%= f.input :building_number,  label: 'Number of building' %>
+            <%= f.input :street,  label: 'Name of street' %>
+            <%= f.input :city,  label: 'City' %>
+            <%= f.input :zip_code,  label: 'Zip-code' %>
           <%= f.button :submit, class: "btn btn-lg btn-success" %>
-        <% end %>
+          <% end %>
       </div>
 
       <div class="col-sm">
