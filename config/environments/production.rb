@@ -68,15 +68,14 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'vol3-red.herokuapp.com', port: 80 }
 
   config.action_mailer.delivery_method = :smtp
+  # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
-    address:              'smtp.wp.pl',
-    port:                 25,
-    domain:               'wp.pl',
-    user_name:            'vol3-red@wp.pl',
-    password:             'bardzotrudnehaslo',
-    authentication:       'plain',
-    enable_starttls_auto: false ,
-    openssl_verify_mode: OpenSSL::SSL::VERIFY_NONE 
+   :address              => "smtp.gmail.com",
+   :port                 => 587,
+   :user_name            => 'vol3-red@snejp.pl',
+   :password             => ENV['GMAIL_PASS'],
+   :authentication       => "plain",
+  :enable_starttls_auto => true
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
