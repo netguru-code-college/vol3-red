@@ -1,5 +1,5 @@
 class BnotificationsController < ApplicationController
-
+  layout 'dashboard'
   def index
     @bnotifications = Bnotification.all
   end
