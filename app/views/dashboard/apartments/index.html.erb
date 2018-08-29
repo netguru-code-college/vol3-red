@@ -1,10 +1,16 @@
+
 <div class="wrapper">
   <div class="jumbotron mt-4">
-    <h1 class="display-5 mb-5">Building of number <%= @building.building_number %></h1>
-    <div class="container">
+    <div class="row">
+      <h1 class="display-5 mb-5">Building of number <%= @building.building_number %></h1>
+
+    </div>
 
       <div class="row">
         <div class="col">
+
+          <%= link_to 'Back to dashboard', dashboard_path, class: "btn btn-sm btn-outline-dark mb-5" %>
+
           <table class="table">
             <thead>
               <tr>
@@ -32,7 +38,9 @@
               </tr>
             </tbody>
           </table>
+
         </div>
+
         <div class="col">
 	  <div style="width: 100%">
 	    <iframe width="300" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=ytw5ig0mGYaEn9rf3H8ylpEOYNY=&q=Osiedle Lecha 1, Poznań" allowfullscreen>
@@ -45,18 +53,12 @@
           </div>
         </div>
       </div>
-    </div>
   </div>
 </div>
 <div class="wrapper">
   <h3 class="mb-3">List of apartments</h3>
 
-  <% @building.apartments.each do |a| %>
-  <%= a.apartment_number %>
-    <% @user.each do |u| %>
-      <%= u.surname %>
-    <% end %>
-  <% end %>
+
 
   <table class="table">
     <thead class="thead-light">

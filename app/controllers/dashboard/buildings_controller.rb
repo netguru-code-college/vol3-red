@@ -4,27 +4,31 @@ class Dashboard::BuildingsController < ApplicationController
 
   def index
     @user = current_user
+    @estate = Estate.find(params[:id])
     @buildings = Building.all
   end
 
   def show
-    @estate = Estate.find(params[:id])    
+    @estate = Estate.find(params[:id])
     @building = Building.find(params[:id])
+    @user = User.find(params[:id])
+    @users = User.all
+
   end
 
   def new
-    @building = building.new(building_params)
+    @building = Building.new
   end
 
   def edit
   end
 
   def create
-    @building = building.find(params[:id])
-    if @building.safe
-      redirect_to @building, notice: 'building was successfully created.'
+    @building = Estate.new(estate_params)
+    if @building.save
+      redirect_to root_path, notice: 'Estate was successfully created.'
     else
-      render :new
+      render :new, notice: 'You got the some problem'
     end
   end
 

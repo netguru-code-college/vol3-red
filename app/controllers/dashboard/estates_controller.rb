@@ -4,33 +4,31 @@ class Dashboard::EstatesController < ApplicationController
   before_action :find_estate, only: [:show, :edit, :update, :destroy]
 
   def index
-    @user = current_user
     @estates = Estate.all
+    @user = current_user
   end
 
   def show
-    @estates = Estate.all
   end
 
   def new
-    @estate = Estate.new(estate_params)
+    @estate = Estate.new
   end
 
   def edit
   end
 
   def create
-    @estate = Estate.find(params[:id])
-    if @estate.safe
-      redirect_to @estate, notice: 'Estate was successfully created.'
+    @estate = Estate.new(estate_params)
+    if @estate.save
+      redirect_to dashboard_estate_path(@estate), notice: 'Estate was successfully created.'
     else
-      render :new
+      render :new, notice: 'You got the some problem'
     end
   end
 
   def update
   end
-
 
   def destroy
   end
@@ -41,7 +39,8 @@ class Dashboard::EstatesController < ApplicationController
   end
 
   def estate_params
-    params.require(:estate).permit(:name)
+    params.require(:estate).permit(:name, :estate_image)
+
   end
 
 

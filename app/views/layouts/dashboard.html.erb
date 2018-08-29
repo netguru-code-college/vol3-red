@@ -21,7 +21,7 @@
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Estates</a>
+              <a class="nav-link" href="#list_estates">Estates</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Buildings</a>
@@ -38,6 +38,15 @@
                 <a class="dropdown-item" href="#">Something else here</a>
               </div>
             </li>
+            <% if user_signed_in? %>
+              <li class="nav-link">
+              <%= link_to('Logout', destroy_user_session_path, class: "btn btn-sm btn-secondary", method: :delete) %>
+              </li>
+            <% else %>
+              <li class="nav-link">
+              <%= link_to('Login', new_user_session_path, class: "btn btn-sm btn-secondary")  %>
+              </li>
+            <% end %>
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -49,6 +58,5 @@
         <%= yield %>
         <%= render 'cookies_eu/consent_banner' %>
       </div>
-    </div>
   </body>
 </html>

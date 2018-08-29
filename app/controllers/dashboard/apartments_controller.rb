@@ -1,11 +1,15 @@
 class Dashboard::ApartmentsController < ApplicationController
   layout 'dashboard'
   before_action :authenticate_user!
-  before_action :find_estate, only: [:show, :edit, :update, :destroy]
+  before_action :find_estate, only: [:index, :show, :edit, :update, :destroy]
 
   def index
     @user = current_user
     @estates = Estate.all
+    @buildings = Building.all
+    @building = Building.find(params[:building_id])
+    @apartments = @building.apartments
+
   end
 
   def show
@@ -37,7 +41,7 @@ class Dashboard::ApartmentsController < ApplicationController
 
   private
   def find_estate
-    @estate = Estate.find(params[:id])
+    @estate = Estate.find(params[:estate_id])
   end
 
   def estate_params

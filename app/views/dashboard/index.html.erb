@@ -1,59 +1,23 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <div class="jumbotron mt-4 text-center">
-        <h2>Hello lorem ipsum <b><%= current_user.email %></b> </h2>
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-          cupidatat non proident, sunt in culpa qui officia deserunt mollit
-          anim id est laborum....</p>
-          <%= button_to 'Add a new estate', root_path, class: "btn-lg btn-outline-info mt-3" %>
+
+  <div class="col">
+    <div class="jumbotron mt-4 text-center">
+      <h2>Hello <b><%= current_user.name %> <%= current_user.surname %></b> </h2>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. </p>
+        <%= link_to 'Add a new estate', new_dashboard_estate_path, class: "btn btn-lg btn-outline-info mt-2" %>
       </div>
-
-      <div class="row">
-
-        <% @enotifications.each do |enotification|  %>
-          <% if enotification.valid_up_to_date >= Date.today %>
-            <div class="card text-center">
-              <div class="card card-header text-white bg-info mb-3">
-                 Estate Notification
-              </div>
-              <div class="card-body ">
-                <h5 class="card-title "> <%= enotification.title %> </h5>
-                <p class="card-text"> <%= enotification.body %> </p>
-                <!-- button for admin user -->
-                <a href="#" class="btn btn-outline-dark">Moved to archive</a>
-              </div>
-              <div class="card-footer text-muted">
-                Created at: <%= enotification.created_at.time.to_date %> Valid to: <%= enotification.valid_up_to_date %>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="wrapper mt-4">
-        <div class="row">
-          <% @estates.each do |estate| %>
-            <div class="card mb-4" style="width: 100%">
-              <%= image_tag("estate.jpg", class: "card-img-top", alt: "Estate") %>
-
-              <div class="card-body">
-                <h5 class="card-title"><%= estate.name %></h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-center">
-                      <%= link_to 'Details', dashboard_estate_path(estate), class: "btn btn-outline-info mt-2" %>
-                      <%= link_to 'Archive', root_path, class: "btn btn-outline-danger mt-2 " %>
-                    </li>
-                  </ul>
-              </div>
-              <% end %>
-            </div>
-        </div>
-      </div>
-    </div>
+    <%= render "notification" %>
   </div>
+
+    <!-- if current_user = admin show Estate.all -->
+    <!-- in current_user != admin ahow current_user.apartment -->
+    <!-- if admin?(@user) -->
+    <% if true %>
+      <h3 id="list_estates"> List of estates </h3>
+      <%= render "estates_all" %>
+    <% else %>
+      <%= render "my_apartments" %>
+    <% end %>
+    <!-- end show this if current_user = admin -->
 </div>
