@@ -6,6 +6,7 @@
       <h5 class="card-title "><%= @estate.name %> </h5>
       <p class="card-text">Luis aute irure dolor in reprehenderit in voluptate velit esse
         cillum dolore eu fugiat nulla pariatur.</p>
+        <%= link_to 'Add Estate Notification', new_enotification_path( :estate_id => @estate), class: "btn btn-xs btn-outline-success mb-5" %>
         <%= link_to 'Back to dashboard', dashboard_path, class: "btn btn-sm btn-outline-dark" %>
     </div>
 

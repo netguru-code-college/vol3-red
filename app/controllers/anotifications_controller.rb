@@ -1,5 +1,5 @@
 class AnotificationsController < ApplicationController
-
+  layout 'dashboard'
   def index
     @anotifications = Anotification.all
   end

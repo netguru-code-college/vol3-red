@@ -6,9 +6,9 @@
       <div class='alert alert-success' role="alert"><%= notice %></div>
     <% end %>
 
-      <%= simple_form_for (Anotification.new), url: anotifications_path do  |f| %>
+      <%= simple_form_for (Bnotification.new), url: bnotifications_path do  |f| %>
        <%= f.error_notification %>
-       <%= f.input :apartment_id, as: :hidden, input_html: {value: params[:apartment_id]} %>
+       <%= f.input :building_id, as: :hidden, input_html: {value: params[:building_id]} %>
        <%= f.input :title %>
        <%= f.input :body %>
        <%= f.input :valid_up_to_date, as: :string, input_html: {type: :date} %>
