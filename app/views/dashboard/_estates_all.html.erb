@@ -11,9 +11,6 @@
               <ul class="list-group list-group-flush">
                 <li class="list-group-item text-center">
                   <%= link_to 'Details', dashboard_estate_path(estate), class: "btn btn-outline-info mt-2" %>
-                  <% if current_user.admin? %>
-                  <%= link_to 'Archive', root_path, class: "btn btn-outline-danger mt-2 " %>
-                  <% end %>
                 </li>
               </ul>
             </div>
