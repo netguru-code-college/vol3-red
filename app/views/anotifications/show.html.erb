@@ -6,7 +6,6 @@
     <h5 class="card-title "> <%= @anotification.title %> </h5>
     <p class="card-text"> <%= @anotification.body %> </p>
     <!-- button for admin user -->
-    <a href="#" class="btn btn-outline-dark">Moved to archive</a>
   </div>
   <div class="card-footer text-muted">
     Created at: <%= @anotification.created_at.time.to_date %> Valid to: <%= @anotification.valid_up_to_date %>

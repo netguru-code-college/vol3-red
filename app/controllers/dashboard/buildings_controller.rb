@@ -29,7 +29,6 @@ class Dashboard::BuildingsController < ApplicationController
     @building = Building.new(building_params)
     if @building.save
       redirect_to dashboard_estate_building_path(estate: @estate, id: @building.id), notice: 'Building successfully created.'
-      redirect_to root_path, notice: 'Building was successfully created.'
     else
       render :new, notice: 'You got the some problem'
     end
@@ -45,10 +44,14 @@ class Dashboard::BuildingsController < ApplicationController
   private
 
   def find_estate
-    @estate = Estate.find(params[:id])
+    @estate = Estate.find(params[:estate_id])
   end
   
   def find_building
     @building = Building.find(params[:id])
+  end
+
+  def building_params
+    params.require(:building).permit(:street, :building_number, :city, :zip_code, :estate_id)
   end
 end

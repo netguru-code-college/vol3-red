@@ -5,25 +5,28 @@
       <h5 class="card-title "><%= @estate.name %> </h5>
       <p class="card-text">Luis aute irure dolor in reprehenderit in voluptate velit esse
         cillum dolore eu fugiat nulla pariatur.</p>
-        <%= link_to 'Add Estate Notification', new_enotification_path( :estate_id => @estate), class: "btn btn-xs btn-outline-success mb-5" %>
-        <%= link_to 'Back to dashboard', dashboard_path, class: "btn btn-sm btn-outline-dark" %>
+
+      <%= link_to 'Back to dashboard', dashboard_path, class: "btn btn-sm btn-outline-dark" %>
+      <%= link_to 'Add new building', new_dashboard_estate_building_path(@estate),  class: "btn btn-sm btn-outline-dark" %>
+      <%= link_to 'Add Estate Notification', new_enotification_path( :estate_id => @estate), class: "btn btn-xs btn-outline-success mb-5" %>
     </div>
   </div>
-  <div class="row">
-    <% @estate.buildings.each do |building| %>
-    <div class="col-md-3">
-      <div class="card mb-4" >
-        <div class="card-body">
-          <h5 class="card-title">Budynek nr <%= building.building_number %></h5>
-          <span class="badge badge-info mb-3"><%= @estate.name %></span>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item text-center">
-              <%= link_to 'Details', dashboard_estate_building_apartments_path(@estate, building.id), class: "btn btn-outline-info mt-2" %>
-              <%= link_to 'Archive', root_path, class: "btn btn-xs btn-outline-danger  mt-2 " %>
-            </li>
-          </ul>
-        </div>
-        <% end %>
+    <div class="row">
+        <% @estate.buildings.each do |building| %>
+          <div class="col-md-3">
+          <div class="card mb-4" >
+            <div class="card-body">
+              <h5 class="card-title">Budynek nr <%= building.building_number %></h5>
+              <span class="badge badge-info mb-3"><%= @estate.name %></span>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item text-center">
+                  <%= link_to 'Details', dashboard_estate_building_apartments_path(@estate, building.id), class: "btn btn-outline-info mt-2" %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>  
+    <% end %>
   </div>
   <div class="row">
     <% @enotifications.each do |a|%>
