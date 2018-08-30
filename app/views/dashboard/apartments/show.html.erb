@@ -2,7 +2,7 @@
 
   <div class="card text-center mt-5 mb-5">
     <div class="card-body ">
-      <h5 class="card-title ">Number of building</h5>
+      <h5 class="card-title "> Apartment number <%= @apartment.apartment_number %> </h5>
       <p class="card-text">uis aute irure dolor in reprehenderit in voluptate velit esse
         cillum dolore eu fugiat nulla pariatur.</p>
       <a href="#" class="btn btn-outline-dark">Back to dashboard</a>
@@ -12,8 +12,22 @@
 
     <div class="row">
 
-
-Informacje o apartamencie lądują tu.
+<% @anotifications.each do |a|%>
+      <div class="card text-center">
+        <div class="card card-header text-white bg-info mb-3">
+           Apartment Notification
+        </div>
+        <div class="card-body ">
+          <h5 class="card-title "> <%= a.title %> </h5>
+          <p class="card-text"> <%= a.body %> </p>
+          <!-- button for admin user -->
+          <a href="#" class="btn btn-outline-dark">Moved to archive</a>
+        </div>
+        <div class="card-footer text-muted">
+          Created at: <%= a.created_at.time.to_date %> Valid to: <%= a.valid_up_to_date %>
+        </div>
+      </div>
+<% end %>
 
 
 
