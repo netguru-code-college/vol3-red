@@ -23,7 +23,7 @@ class Dashboard::EstatesController < ApplicationController
   def create
     @estate = Estate.new(estate_params)
     if @estate.save
-      redirect_to dashboard_estate_path(@estate), notice: 'Estate was successfully created.'
+      redirect_to dashboard_path(@estate), notice: 'Estate was successfully created.'
     else
       render :new, notice: 'You got the some problem'
     end

@@ -22,18 +22,20 @@ class Dashboard::ApartmentsController < ApplicationController
   end
 
   def new
-    @estate = Estate.new(estate_params)
+    find_estate
+    find_building
+    @apartment = Apartment.new
   end
 
   def edit
   end
 
   def create
-    @estate = Estate.find(params[:id])
-    if @estate.safe
-      redirect_to @estate, notice: 'Estate was successfully created.'
+    @apartment = Apartment.new(apartment_params)
+    if @apartment.save
+      redirect_to dashboard_path, notice: 'Apartment was successfully created.'
     else
-      render :new
+      render :new, notice: "You did it wrong!"
     end
   end
 
@@ -49,7 +51,11 @@ class Dashboard::ApartmentsController < ApplicationController
     @estate = Estate.find(params[:estate_id])
   end
 
-  def estate_params
-    params.require(:estate).permit(:name)
+  def find_building
+    @building = Building.find(params[:building_id])
+  end
+
+  def apartment_params
+    params.require(:apartment).permit(:building_id, :apartment_number)
   end
 end

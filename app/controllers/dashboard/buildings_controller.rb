@@ -28,7 +28,7 @@ class Dashboard::BuildingsController < ApplicationController
   def create
     @building = Building.new(building_params)
     if @building.save
-      redirect_to dashboard_estate_building_apartments_path(estate: @estate, building_id: @building.id), notice: 'Building successfully created.'
+      redirect_to dashboard_path, notice: 'Building was successfully created.'
     else
       render :new, notice: 'You got the some problem'
     end
