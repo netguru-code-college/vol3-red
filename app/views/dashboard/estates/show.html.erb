@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="card text-center mt-5 mb-5">
     <%= image_tag(@estate.get_estate_image, class: "card-img-top", alt: "Estate") %>
     <div class="card-body ">
@@ -9,9 +8,7 @@
         <%= link_to 'Add Estate Notification', new_enotification_path( :estate_id => @estate), class: "btn btn-xs btn-outline-success mb-5" %>
         <%= link_to 'Back to dashboard', dashboard_path, class: "btn btn-sm btn-outline-dark" %>
     </div>
-
   </div>
-
     <div class="row">
         <% @estate.buildings.each do |building| %>
           <div class="col-md-3">
@@ -28,11 +25,23 @@
           </div>
         </div>
         <% end %>
-
-
-
-
-
   </div>
-
+  <div class="row">
+    <% @enotifications.each do |a|%>
+      <div class="card text-center">
+        <div class="card card-header text-white bg-info mb-3">
+           Estate Notification
+        </div>
+        <div class="card-body ">
+          <h5 class="card-title "> <%= a.title %> </h5>
+          <p class="card-text"> <%= a.body %> </p>
+          <!-- button for admin user -->
+          <a href="#" class="btn btn-outline-dark">Moved to archive</a>
+        </div>
+        <div class="card-footer text-muted">
+          Created at: <%= a.created_at.time.to_date %> Valid to: <%= a.valid_up_to_date %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
