@@ -1,14 +1,11 @@
 
-<h5>Notifications</h5>
-
 <div class="card text-center mb-4">
-  <div class="card card-header text-white bg-info mb-3">
-    Notification
+  <div class="card card-header mb-3 <%= class_str %>">
+    <%= notification.title %>
   </div>
   <div class="card-body ">
-    <h5 class="card-title ">Title of notification</h5>
-    <p class="card-text">uis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur.</p>
+    <h5 class="card-title "><%= notification.title %></h5>
+    <p class="card-text"><%= notification.body %></p>
     <a href="#" class="btn btn-outline-dark">Moved to archive</a>
   </div>
   <div class="card-footer text-muted">

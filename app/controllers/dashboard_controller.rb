@@ -6,8 +6,20 @@ class DashboardController < ApplicationController
   def index
     @user = current_user
     @estates = Estate.all
-    @enotifications = Enotification.all
-    @bnotifications = Bnotification.all
-    @anotifications = Anotification.all
+
+    @anotifications = []
+    @bnotifications = []
+    @enotifications = []
+
+    @user.apartment_users.each do |apartment_user|
+      apartment = apartment_user.apartment
+      @anotifications << apartment.anotifications
+      @bnotifications << apartment.building.bnotifications
+      @enotifications << apartment.building.estate.enotifications
+    end
+    
+    @anotifications.flatten!
+    @bnotifications.flatten!
+    @enotifications.flatten!
   end
 end

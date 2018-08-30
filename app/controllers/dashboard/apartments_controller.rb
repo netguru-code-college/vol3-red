@@ -1,3 +1,4 @@
+# coding: utf-8
 class Dashboard::ApartmentsController < ApplicationController
   layout 'dashboard'
   before_action :authenticate_user!
@@ -51,6 +52,4 @@ class Dashboard::ApartmentsController < ApplicationController
   def estate_params
     params.require(:estate).permit(:name)
   end
-
-
 end

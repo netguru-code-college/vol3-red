@@ -80,7 +80,30 @@ for i in 0...3
   end
 end
 
-
-
+puts "Adding admin"
+estate = Estate.create!(name: 'Osiedle Superadmina')
+building = Building.create!(street:  'Adminowo',
+                           building_number: 1,
+                           city: 'Poznań',
+                           zip_code: '61-101',
+                           estate: estate
+                          )
+user = User.new(
+  email: "admin@example.com",
+  name: 'Ziomeczek',
+  surname: 'Admin'
+)
+user.skip_confirmation!
+user.password = 'qwerty'
+user.save
+apartment = Apartment.create!(
+  apartment_number: 1,
+  building: building
+)
+ApartmentUser.create(
+  apartment: apartment,
+  user: user,
+  status: 'admin'
+)
 
 puts "Estates, buildings and apartments seeds created"
