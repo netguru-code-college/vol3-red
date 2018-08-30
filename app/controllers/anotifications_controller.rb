@@ -7,10 +7,18 @@ class AnotificationsController < ApplicationController
   def create
     @anotification = Anotification.new(anotification_params)
     if @anotification.save
-      redirect_to anotifications_path,
+      redirect_to dashboard_estate_building_apartment_path(
+          :id => @anotification.apartment_id,
+          :building_id => @anotification.apartment.building_id, 
+          :estate_id => @anotification.apartment.building.estate_id
+        ),
                   notice: 'Notice was successfully created.'
     else
-      redirect_to anotifications_path,
+      redirect_to dashboard_estate_building_apartment_path(
+          :id => @anotification.apartment_id,
+          :building_id => @anotification.apartment.building_id, 
+          :estate_id => @anotification.apartment.building.estate_id
+        ),
                   notice: 'Hello! it is meeeee! Your error!'
     end
   end
