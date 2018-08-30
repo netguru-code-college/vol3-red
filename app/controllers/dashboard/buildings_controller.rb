@@ -10,14 +10,15 @@ class Dashboard::BuildingsController < ApplicationController
   end
 
   def show
-    @estate = Estate.find(params[:id])
-    @building = Building.find(params[:id])
+    find_estate
+    find_building
     @user = User.find(params[:id])
     @users = User.all
 
   end
 
   def new
+    find_estate
     @building = Building.new
   end
 
@@ -25,9 +26,10 @@ class Dashboard::BuildingsController < ApplicationController
   end
 
   def create
-    @building = Estate.new(estate_params)
+    @building = Building.new(building_params)
     if @building.save
-      redirect_to root_path, notice: 'Estate was successfully created.'
+      redirect_to dashboard_estate_building_path(estate: @estate, id: @building.id), notice: 'Building successfully created.'
+      redirect_to root_path, notice: 'Building was successfully created.'
     else
       render :new, notice: 'You got the some problem'
     end
@@ -41,9 +43,12 @@ class Dashboard::BuildingsController < ApplicationController
   end
 
   private
-  def find_building
-    @building = building.find(params[:id])
+
+  def find_estate
+    @estate = Estate.find(params[:id])
   end
-
-
+  
+  def find_building
+    @building = Building.find(params[:id])
+  end
 end
