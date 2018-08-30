@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace :dashboard do
     resources :estates do
-      resources :buildings do
+      resources :buildings, only: [:new ,:create] do
         resources :apartments do
         end
       end
