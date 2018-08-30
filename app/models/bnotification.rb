@@ -11,4 +11,5 @@ class Bnotification < ApplicationRecord
   end
 
   belongs_to :building
+  default_scope -> { order(:valid_up_to_date) }
 end

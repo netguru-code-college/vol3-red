@@ -1,6 +1,9 @@
 <div class="container">
 
   <div class="col">
+    <% if notice.present? %>
+      <div class='alert alert-success' role="alert"><%= notice %></div>
+    <% end %>
     <div class="jumbotron mt-4 text-center">
       <h2>Hello <b><%= current_user.name %> <%= current_user.surname %></b> </h2>
       <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -39,15 +42,39 @@
               <td><%= user_apartment.apartment.apartment_number %></td>
               <td> <%= user_apartment.apartment.building.building_number %></td>
               <td><%= user_apartment.apartment.building.estate.name %></td>
-              <% end %>
+            <% end %>
 
             </tr>
-            <% end %>
           </tbody>
         </table>
-      </div>
-      <hr>
-    <%= render "notification" %>
+        </div>
+
+        <hr>
+
+        <h5>Notifications</h5>     
+
+        <% @anotifications.each_with_index do |notification, index| %>
+          <%= render partial: "notification", locals: {
+            notification: notification,
+            class_str: 'text-white bg-info'
+          } %>
+        <% end %>
+
+        <% @bnotifications.each_with_index do |notification, index| %>
+          <%= render partial: "notification", locals: {
+            notification: notification,
+            class_str: 'text-white bg-primary'
+          } %>
+        <% end %>
+
+        <% @enotifications.each_with_index do |notification, index| %>
+          <%= render partial: "notification", locals: {
+            notification: notification,
+            class_str: 'text-white bg-warning'
+          } %>
+        <% end %>
+
+      <% end %>
   </div>
 
   </div>

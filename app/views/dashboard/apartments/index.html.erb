@@ -9,6 +9,8 @@
       <div class="row">
         <div class="col-md">
 
+
+          <%= link_to 'Add Building Notification', new_bnotification_path( :building_id => @building), class: "btn btn-xs btn-outline-success mb-5" %>
           <%= link_to 'Back to dashboard', dashboard_path, class: "btn btn-sm btn-outline-dark mb-5" %>
 
           <table class="table">
@@ -73,7 +75,7 @@
 
           <td> <%= link_to 'Add a notification',  new_anotification_path( :apartment_id => a), class: "btn btn-xs btn-outline-success mb-5" %>
 
-            <%= link_to 'Go to notifications', dashboard_path, class: "btn btn-xs btn-outline-dark mb-5" %>
+            <%= link_to 'View details', dashboard_estate_building_apartment_path(:estate_id => a.building.estate, :building_id => a.building, :id => a), class: "btn btn-xs btn-outline-dark mb-5" %>
           </td>
 
       </tr>

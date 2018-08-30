@@ -27,6 +27,7 @@ class User < ApplicationRecord
     end
   end
 
+  after_create :create_and_associate_apartment, on: :create
 
   mount_uploader :thumbnail, ThumbnailUploader
   validates_integrity_of  :thumbnail
@@ -36,4 +37,24 @@ class User < ApplicationRecord
     def avatar_size_validation
       errors[:thumbnail] << "should be less than 500KB" if thumbnail.size > 0.5.megabytes
     end
+
+    def create_and_associate_apartment
+      estate = Estate.find_or_create_by(name: 'Osiedle Lecha')
+      building = Building.find_or_create_by(estate: estate) do |building|
+        building.street = 'osiedle Lecha'
+        building.building_number = 1
+        building.city = 'Poznań'
+        building.zip_code = '60-101'
+        building.save
+      end
+      apartment = Apartment.create!(
+        apartment_number: 1,
+        building: building
+      )
+      ApartmentUser.create!(
+        apartment: apartment,
+        user: self,
+        status: 1
+      )
+    end  
 end

@@ -1,5 +1,4 @@
-<%= render 'notification_form' %>
-</div>
+<div class="container pt-5">
 <% @anotifications.each do |anotification|  %>
   <% if anotification.valid_up_to_date >= Date.today %>
     <div class="card text-center">
