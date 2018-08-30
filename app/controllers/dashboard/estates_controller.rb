@@ -9,6 +9,7 @@ class Dashboard::EstatesController < ApplicationController
   end
 
   def show
+    @enotifications =  @estate.enotifications
     find_estate
   end
 

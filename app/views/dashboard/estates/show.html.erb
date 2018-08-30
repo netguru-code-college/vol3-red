@@ -23,8 +23,24 @@
             </li>
           </ul>
         </div>
+        <% end %>
+  </div>
+  <div class="row">
+    <% @enotifications.each do |a|%>
+      <div class="card text-center">
+        <div class="card card-header text-white bg-info mb-3">
+           Estate Notification
+        </div>
+        <div class="card-body ">
+          <h5 class="card-title "> <%= a.title %> </h5>
+          <p class="card-text"> <%= a.body %> </p>
+          <!-- button for admin user -->
+          <a href="#" class="btn btn-outline-dark">Moved to archive</a>
+        </div>
+        <div class="card-footer text-muted">
+          Created at: <%= a.created_at.time.to_date %> Valid to: <%= a.valid_up_to_date %>
+        </div>
       </div>
-    </div>
     <% end %>
   </div>
 </div>

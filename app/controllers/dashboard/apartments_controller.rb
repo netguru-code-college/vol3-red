@@ -10,6 +10,7 @@ class Dashboard::ApartmentsController < ApplicationController
     @buildings = Building.all
     @building = Building.find(params[:building_id])
     @apartments = @building.apartments
+    @bnotifications = @building.bnotifications 
 
 
   end
