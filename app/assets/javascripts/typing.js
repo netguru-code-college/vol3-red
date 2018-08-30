@@ -6,10 +6,13 @@ $(document).ready(function(){
   typeWriter();
 
   function typeWriter() {
-       $demo = document.getElementById("typing");
+    $demo = document.getElementById("typing");
     if (i < txt.length) {
       $demo.innerHTML += txt.charAt(i);
       i++;
+    } else {
+      i = 0;
+      $demo.innerHTML = '';
     }
     setTimeout(typeWriter, speed);
   }
