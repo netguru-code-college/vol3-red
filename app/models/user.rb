@@ -39,9 +39,17 @@ class User < ApplicationRecord
     end
 
     def create_and_associate_apartment
+      estate = Estate.find_or_create_by(name: 'Osiedle Lecha')
+      building = Building.find_or_create_by(estate: estate) do |building|
+        building.street = 'osiedle Lecha'
+        building.building_number = 1
+        building.city = 'Poznań'
+        building.zip_code = '60-101'
+        building.save
+      end
       apartment = Apartment.create!(
         apartment_number: 1,
-        building_id: 1
+        building: building
       )
       ApartmentUser.create!(
         apartment: apartment,
