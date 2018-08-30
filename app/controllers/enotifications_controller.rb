@@ -7,10 +7,10 @@ class EnotificationsController < ApplicationController
   def create
     @enotification = Enotification.new(enotification_params)
     if @enotification.save
-      redirect_to enotifications_path,
+      redirect_to dashboard_estate_path(:id => @enotification.estate_id),
                   notice: 'Notice was successfully created.'
     else
-      redirect_to enotifications_path,
+      redirect_to dashboard_estate_path(:id => @enotification.estate_id),
                   notice: 'Hello! it is meeeee! Your error!'
     end
   end

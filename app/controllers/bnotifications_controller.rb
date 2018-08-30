@@ -7,10 +7,10 @@ class BnotificationsController < ApplicationController
   def create
     @bnotification = Bnotification.new(bnotification_params)
     if @bnotification.save
-      redirect_to bnotifications_path,
+      redirect_to dashboard_estate_building_apartments_path(:building_id => @bnotification.building_id, :estate_id => @bnotification.building.estate_id),
                   notice: 'Notice was successfully created.'
     else
-      redirect_to bnotifications_path,
+      redirect_to dashboard_estate_building_apartments_path(:building_id => @bnotification.building_id, :estate_id => @bnotification.building.estate_id),
                   notice: 'Hello! it is meeeee! Your error!'
     end
   end
