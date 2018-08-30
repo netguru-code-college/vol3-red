@@ -9,6 +9,8 @@
       <div class="row">
         <div class="col-md">
 
+
+          <%= link_to 'Add Building Notification', new_bnotification_path( :building_id => @building), class: "btn btn-xs btn-outline-success mb-5" %>
           <%= link_to 'Back to dashboard', dashboard_path, class: "btn btn-sm btn-outline-dark mb-5" %>
 
           <table class="table">
@@ -73,7 +75,7 @@
 
           <td> <%= link_to 'Add a notification',  new_anotification_path( :apartment_id => a), class: "btn btn-xs btn-outline-success mb-5" %>
 
-            <%= link_to 'Go to notifications', dashboard_path, class: "btn btn-xs btn-outline-dark mb-5" %>
+            <%= link_to 'View details', dashboard_estate_building_apartment_path(:estate_id => a.building.estate, :building_id => a.building, :id => a), class: "btn btn-xs btn-outline-dark mb-5" %>
           </td>
 
       </tr>
@@ -81,5 +83,22 @@
       <% end %>
     </tbody>
   </table>
-
+  <div class="row">
+    <% @bnotifications.each do |a|%>
+      <div class="card text-center">
+        <div class="card card-header text-white bg-info mb-3">
+           Building Notification
+        </div>
+        <div class="card-body ">
+          <h5 class="card-title "> <%= a.title %> </h5>
+          <p class="card-text"> <%= a.body %> </p>
+          <!-- button for admin user -->
+          <a href="#" class="btn btn-outline-dark">Moved to archive</a>
+        </div>
+        <div class="card-footer text-muted">
+          Created at: <%= a.created_at.time.to_date %> Valid to: <%= a.valid_up_to_date %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

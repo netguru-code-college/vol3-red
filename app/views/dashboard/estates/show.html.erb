@@ -5,8 +5,10 @@
       <h5 class="card-title "><%= @estate.name %> </h5>
       <p class="card-text">Luis aute irure dolor in reprehenderit in voluptate velit esse
         cillum dolore eu fugiat nulla pariatur.</p>
+
       <%= link_to 'Back to dashboard', dashboard_path, class: "btn btn-sm btn-outline-dark" %>
       <%= link_to 'Add new building', new_dashboard_estate_building_path(@estate),  class: "btn btn-sm btn-outline-dark" %>
+      <%= link_to 'Add Estate Notification', new_enotification_path( :estate_id) => @estate), class: "btn btn-xs btn-outline-success mb-5" %>
     </div>
   </div>
   <div class="row">
@@ -23,8 +25,24 @@
             </li>
           </ul>
         </div>
+        <% end %>
+  </div>
+  <div class="row">
+    <% @enotifications.each do |a|%>
+      <div class="card text-center">
+        <div class="card card-header text-white bg-info mb-3">
+           Estate Notification
+        </div>
+        <div class="card-body ">
+          <h5 class="card-title "> <%= a.title %> </h5>
+          <p class="card-text"> <%= a.body %> </p>
+          <!-- button for admin user -->
+          <a href="#" class="btn btn-outline-dark">Moved to archive</a>
+        </div>
+        <div class="card-footer text-muted">
+          Created at: <%= a.created_at.time.to_date %> Valid to: <%= a.valid_up_to_date %>
+        </div>
       </div>
-    </div>
     <% end %>
   </div>
 </div>
